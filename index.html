@@ -44,13 +44,46 @@
                 </a>
             </div>
             <div class="nav-user">
-                <div class="user-info">
-                    <span class="plan-badge">Pro</span>
-                    <span class="user-name">John Doe</span>
+                <div class="user-info" id="userInfo">
+                    <span class="plan-badge" id="userPlan">Pro</span>
+                    <span class="user-name" id="userName">John Doe</span>
                 </div>
-                <button class="theme-toggle" id="themeToggle" title="Toggle theme">
-                    <i class="fas fa-moon"></i>
-                </button>
+                <div class="user-menu" id="userMenu">
+                    <button class="user-menu-toggle" id="userMenuToggle">
+                        <i class="fas fa-user-circle"></i>
+                    </button>
+                    <div class="user-dropdown" id="userDropdown">
+                        <div class="user-dropdown-header">
+                            <span id="dropdownUserName">John Doe</span>
+                            <span id="dropdownUserEmail">john@example.com</span>
+                        </div>
+                        <div class="user-dropdown-actions">
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-user"></i>
+                                Profile
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-cog"></i>
+                                Settings
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-question-circle"></i>
+                                Help
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item" id="themeToggle">
+                                <i class="fas fa-moon"></i>
+                                <span id="themeText">Switch to Light</span>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item" id="logoutBtn">
+                                <i class="fas fa-sign-out-alt"></i>
+                                Sign Out
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
                 <button class="menu-toggle" id="menuToggle">
                     <i class="fas fa-bars"></i>
                 </button>

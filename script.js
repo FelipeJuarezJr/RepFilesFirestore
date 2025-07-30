@@ -1,7 +1,69 @@
 // Basic functionality for RepFiles prototype
 
+// Authentication state management
+function checkAuthState() {
+    const userData = JSON.parse(localStorage.getItem('userData') || sessionStorage.getItem('userData') || 'null');
+    
+    if (!userData) {
+        // Redirect to login if not authenticated
+        if (!window.location.href.includes('login.html') && !window.location.href.includes('register.html')) {
+            window.location.href = 'login.html';
+            return;
+        }
+    } else {
+        // Update UI with user data
+        updateUserInterface(userData);
+    }
+}
+
+function updateUserInterface(userData) {
+    const userName = document.getElementById('userName');
+    const userPlan = document.getElementById('userPlan');
+    const dropdownUserName = document.getElementById('dropdownUserName');
+    const dropdownUserEmail = document.getElementById('dropdownUserEmail');
+    
+    if (userName) userName.textContent = userData.name || userData.firstName || 'User';
+    if (userPlan) userPlan.textContent = userData.plan || 'Free';
+    if (dropdownUserName) dropdownUserName.textContent = userData.name || `${userData.firstName} ${userData.lastName}` || 'User';
+    if (dropdownUserEmail) dropdownUserEmail.textContent = userData.email || '';
+}
+
+function logout() {
+    localStorage.removeItem('userData');
+    sessionStorage.removeItem('userData');
+    window.location.href = 'login.html';
+}
+
 // Navigation
 document.addEventListener('DOMContentLoaded', function() {
+    // Check authentication state
+    checkAuthState();
+    
+    // User dropdown functionality
+    const userMenuToggle = document.getElementById('userMenuToggle');
+    const userDropdown = document.getElementById('userDropdown');
+    const logoutBtn = document.getElementById('logoutBtn');
+    
+    if (userMenuToggle && userDropdown) {
+        userMenuToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            userDropdown.classList.toggle('active');
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!userMenuToggle.contains(e.target) && !userDropdown.contains(e.target)) {
+                userDropdown.classList.remove('active');
+            }
+        });
+    }
+    
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            logout();
+        });
+    }
     // Navigation tabs
     const navLinks = document.querySelectorAll('.nav-link');
     const contentSections = document.querySelectorAll('.content-section');
@@ -129,30 +191,36 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Theme toggle functionality
     const themeToggle = document.getElementById('themeToggle');
-    const themeIcon = themeToggle.querySelector('i');
+    const themeText = document.getElementById('themeText');
     
     // Check for saved theme preference or default to diurnal
     const currentTheme = localStorage.getItem('theme') || 'diurnal';
     document.documentElement.setAttribute('data-theme', currentTheme);
-    updateThemeIcon(currentTheme);
+    updateThemeUI(currentTheme);
     
-    themeToggle.addEventListener('click', function() {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'nocturnal' ? 'diurnal' : 'nocturnal';
-        
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        updateThemeIcon(newTheme);
-    });
+    if (themeToggle) {
+        themeToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'nocturnal' ? 'diurnal' : 'nocturnal';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeUI(newTheme);
+            
+            // Close dropdown after theme change
+            userDropdown.classList.remove('active');
+        });
+    }
     
-    function updateThemeIcon(theme) {
+    function updateThemeUI(theme) {
         const icon = themeToggle.querySelector('i');
         if (theme === 'nocturnal') {
             icon.className = 'fas fa-sun';
-            icon.title = 'Switch to light mode';
+            themeText.textContent = 'Switch to Light';
         } else {
             icon.className = 'fas fa-moon';
-            icon.title = 'Switch to dark mode';
+            themeText.textContent = 'Switch to Dark';
         }
     }
 

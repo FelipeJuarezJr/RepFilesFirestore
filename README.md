@@ -1,134 +1,118 @@
-# RepFilesFirestore - Reptile Management System
+# RepFiles - Reptile Management App
 
-A comprehensive web-based application for managing reptile collections, tracking health, breeding programs, and maintaining detailed records for herpetoculture enthusiasts.
+A comprehensive web application for managing reptile collections, breeding projects, and care schedules.
 
-## 🦎 Features
+## Features
 
-### Reptile Profiles
-- **Species, name, hatch date, weight, health status**
-- Complete individual animal records with detailed information
-- Track growth and development milestones
+### Authentication System
+- **Login/Register Pages**: Beautiful, responsive authentication screens with nocturnal theme support
+- **Password Strength Indicator**: Real-time password strength checking during registration
+- **Social Authentication**: Placeholder for Google and GitHub OAuth integration
+- **Session Management**: Persistent login with "Remember Me" functionality
+- **User Dropdown**: Profile menu with logout functionality
 
-### Photos and Notes
-- **Photos and notes per animal**
-- Visual documentation of each reptile
-- Detailed notes for health, behavior, and care observations
+### Core Features
+- **Dashboard**: Overview of collection statistics and recent activity
+- **Reptile Management**: Add, edit, and track individual reptiles
+- **Breeding Projects**: Manage breeding pairs and genetics calculations
+- **Schedule & Tasks**: Calendar-based task management
+- **Inventory Tracking**: Food and supply management with cost tracking
+- **Reports & Analytics**: Comprehensive reporting and data visualization
 
-### Feed/Water Logs
-- **Track feeding, watering, shedding, and defecation**
-- Comprehensive logging system for daily care activities
-- **Optionally set reminders or recurring tasks**
-- Automated notifications for feeding schedules and health checks
+### Design Features
+- **Nocturnal Theme**: Dark mode optimized for low-light environments
+- **Responsive Design**: Works seamlessly on desktop, tablet, and mobile
+- **Modern UI**: Clean, intuitive interface with smooth animations
+- **Accessibility**: Keyboard navigation and screen reader support
 
-### Weight Charts
-- **Graph of weight over time**
-- Visual tracking of growth patterns
-- Data visualization for health monitoring
-
-### Breeding Tracker
-- **Pairings, clutches, incubation, and hatchlings**
-- Complete breeding program management
-- Track genetic lines and breeding success rates
-
-### Media Uploads
-- **Per reptile, clutch, or general album**
-- Organized photo galleries
-- Document breeding projects and individual animals
-
-### Lineage / Genetics Tracker
-- **Sire/dame linking and lineage history**
-- Maintain genetic records and pedigrees
-- Track inheritance patterns and breeding history
-
-### Export / Backup
-- **Export to PDF or spreadsheet**
-- Backup your data in multiple formats
-- Share records with veterinarians or other breeders
-
-### Web + Mobile Support
-- **App works on all screen sizes**
-- Responsive design for desktop, tablet, and mobile devices
-- Access your reptile records anywhere, anytime
-
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
-- Modern web browser
-- Firebase account (for data storage)
+- Modern web browser (Chrome, Firefox, Safari, Edge)
+- No server setup required - runs entirely in the browser
 
 ### Installation
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/FelipeJuarezJr/RepFilesFirestore.git
-   ```
+1. Clone or download the repository
+2. Open `login.html` in your web browser
+3. Create an account or sign in with any email/password combination (demo mode)
 
-2. Open `index.html` in your web browser
+### Usage
+1. **Registration**: Fill out the registration form with your details
+2. **Login**: Use your email and password to access the application
+3. **Navigation**: Use the sidebar to navigate between different sections
+4. **Theme Toggle**: Switch between light and dark themes using the moon/sun icon
+5. **User Menu**: Click your profile icon to access account options and logout
 
-3. Configure Firebase settings in `firebase.json` and `.firebaserc`
+## File Structure
 
-## 📱 Usage
+```
+RepFilesFirestore/
+├── index.html          # Main application interface
+├── login.html          # Login page
+├── register.html       # Registration page
+├── styles.css          # Main stylesheet with theme support
+├── script.js           # Main application logic
+├── auth.js             # Authentication functionality
+├── firebase.json       # Firebase configuration
+└── README.md           # This file
+```
 
-### Adding a New Reptile
-1. Navigate to the "Add Reptile" section
-2. Fill in species, name, hatch date, and initial weight
-3. Upload photos and add initial notes
-4. Save the profile
+## Authentication System
 
-### Logging Activities
-1. Select the reptile from your collection
-2. Choose the activity type (feeding, watering, shedding, etc.)
-3. Add details and optional photos
-4. Set reminders if needed
+### Features
+- **Form Validation**: Client-side validation for all input fields
+- **Password Security**: Strength indicator and confirmation matching
+- **Session Persistence**: Optional "Remember Me" functionality
+- **Responsive Design**: Optimized for all screen sizes
+- **Theme Integration**: Consistent with the main application theme
 
-### Breeding Management
-1. Create breeding pairs
-2. Track clutch development
-3. Monitor incubation conditions
-4. Record hatchling data
+### Demo Mode
+For demonstration purposes, the authentication system accepts any valid email/password combination. In a production environment, this would be replaced with proper backend authentication.
 
-## 🛠️ Technology Stack
+### User Data Storage
+User data is stored in browser localStorage/sessionStorage for demo purposes. In production, this would be handled by a secure backend database.
 
-- **Frontend**: HTML5, CSS3, JavaScript
-- **Backend**: Firebase Firestore
-- **Storage**: Firebase Storage (for media files)
-- **Authentication**: Firebase Auth (planned)
+## Theme System
 
-## 📊 Data Structure
+The application features a sophisticated theme system with:
 
-The application uses Firebase Firestore to store:
-- Reptile profiles and metadata
-- Activity logs and health records
-- Breeding data and lineage information
-- Media file references
+### Nocturnal Mode (Dark Theme)
+- Optimized for low-light environments
+- Green accent colors for better visibility
+- Reduced eye strain during extended use
 
-## 🔒 Privacy & Security
+### Diurnal Mode (Light Theme)
+- Traditional light interface
+- High contrast for daytime use
+- Professional appearance
 
-- All data is stored securely in Firebase
-- User authentication and authorization (coming soon)
-- Data backup and export capabilities
+### Theme Persistence
+- Theme preference is saved in localStorage
+- Automatically applied on subsequent visits
+- Can be toggled from any page
 
-## 🤝 Contributing
+## Browser Compatibility
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+- Chrome 80+
+- Firefox 75+
+- Safari 13+
+- Edge 80+
 
-## 📄 License
+## Future Enhancements
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+- [ ] Backend integration with Firebase/Firestore
+- [ ] Real social authentication (Google, GitHub)
+- [ ] Image upload and management
+- [ ] Advanced breeding genetics calculator
+- [ ] Mobile app development
+- [ ] Multi-user collaboration features
+- [ ] Export/import functionality
+- [ ] Advanced reporting and analytics
 
-## 🙏 Acknowledgments
+## Contributing
 
-- Built for the herpetoculture community
-- Inspired by the need for better reptile management tools
-- Special thanks to reptile breeders and enthusiasts for feedback
+This is a demo project forked from ReptiGram. Feel free to explore and modify the code for your own reptile management needs.
 
-## 📞 Support
+## License
 
-For support, please open an issue on GitHub or contact the development team.
-
----
-
-**RepFilesFirestore** - Making reptile management easier, one scale at a time! 🦎✨ 
+This project is for educational and demonstration purposes. 
