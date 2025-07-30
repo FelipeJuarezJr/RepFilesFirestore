@@ -91,7 +91,6 @@ body:has(.auth-container) {
     display: flex;
     align-items: center;
     margin-top: 8px;
-    overflow: hidden;
 }
 
 .input-group i {
@@ -103,14 +102,12 @@ body:has(.auth-container) {
     font-size: 0.9rem;
     z-index: 1;
     pointer-events: none;
-    width: 16px;
-    text-align: center;
 }
 
 .input-group input,
 .input-group select {
     width: 100%;
-    padding: 14px 12px 14px 55px;
+    padding: 14px 12px 14px 50px;
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
     background: var(--bg-primary);
@@ -128,9 +125,19 @@ body:has(.auth-container) {
     box-shadow: 0 0 0 3px rgba(0, 255, 0, 0.2);
 }
 
+.input-group input::placeholder,
+.input-group select::placeholder {
+    padding-left: 15px;
+}
+
+.input-group input,
+.input-group select {
+    text-indent: 20px;
+}
+
 .password-toggle {
     position: absolute;
-    right: 12px;
+    right: 8px;
     background: none;
     border: none;
     color: var(--text-light);
@@ -192,10 +199,10 @@ body:has(.auth-container) {
 .form-options {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 20px;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 15px;
 }
 
 .checkbox-label {
@@ -205,6 +212,9 @@ body:has(.auth-container) {
     cursor: pointer;
     font-size: 0.9rem;
     color: var(--text-secondary);
+    flex: 1;
+    min-width: 200px;
+    white-space: nowrap;
 }
 
 .checkbox-label input[type="checkbox"] {
@@ -212,12 +222,15 @@ body:has(.auth-container) {
 }
 
 .checkmark {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
     border: 2px solid var(--border-color);
     border-radius: var(--border-radius-sm);
     position: relative;
     transition: var(--transition);
+    flex-shrink: 0;
+    min-width: 20px;
+    min-height: 20px;
 }
 
 .checkbox-label input[type="checkbox"]:checked + .checkmark {
