@@ -376,7 +376,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
         backgroundColor: AppTheme.primaryColor,
         child: Text(
           userData?['name']?.substring(0, 1).toUpperCase() ?? 'U',
-          style: const TextStyle(
+          style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold,
           ),
@@ -390,7 +390,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
             children: [
               Text(
                 userData?['name'] ?? 'User',
-                style: const TextStyle(fontWeight: FontWeight.bold),
+                style: TextStyle(fontWeight: FontWeight.bold),
               ),
               Text(
                 userData?['email'] ?? '',
@@ -530,7 +530,7 @@ class _UserMenuButtonState extends State<_UserMenuButton> {
             ),
           ),
           const PopupMenuDivider(),
-          const PopupMenuItem(
+          PopupMenuItem(
             value: 'profile',
             child: Row(
               children: [
@@ -540,7 +540,7 @@ class _UserMenuButtonState extends State<_UserMenuButton> {
               ],
             ),
           ),
-          const PopupMenuItem(
+          PopupMenuItem(
             value: 'settings',
             child: Row(
               children: [
@@ -550,7 +550,7 @@ class _UserMenuButtonState extends State<_UserMenuButton> {
               ],
             ),
           ),
-          const PopupMenuItem(
+          PopupMenuItem(
             value: 'help',
             child: Row(
               children: [
@@ -575,7 +575,7 @@ class _UserMenuButtonState extends State<_UserMenuButton> {
             ),
           ),
           const PopupMenuDivider(),
-          const PopupMenuItem(
+          PopupMenuItem(
             value: 'logout',
             child: Row(
               children: [

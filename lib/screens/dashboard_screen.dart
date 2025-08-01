@@ -144,7 +144,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                 getTitlesWidget: (value, meta) {
                                   return Text(
                                     '${value.toInt()}g',
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                       color: AppTheme.textSecondary,
                                       fontSize: 10,
                                     ),
@@ -160,7 +160,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                   if (value.toInt() >= 0 && value.toInt() < months.length) {
                                     return Text(
                                       months[value.toInt()],
-                                      style: const TextStyle(
+                                      style: TextStyle(
                                         color: AppTheme.textSecondary,
                                         fontSize: 10,
                                       ),

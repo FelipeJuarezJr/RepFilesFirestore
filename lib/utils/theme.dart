@@ -89,7 +89,7 @@ class AppTheme {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.dark,
-      colorScheme: const ColorScheme.dark(
+      colorScheme: ColorScheme.dark(
         primary: primaryColor,
         secondary: secondaryColor,
         surface: bgSecondary,
@@ -102,7 +102,7 @@ class AppTheme {
         onError: Colors.white,
       ),
       scaffoldBackgroundColor: bgSecondary,
-      appBarTheme: const AppBarTheme(
+      appBarTheme: AppBarTheme(
         backgroundColor: bgPrimary,
         foregroundColor: textPrimary,
         elevation: 0,
@@ -114,7 +114,7 @@ class AppTheme {
         elevation: 0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(borderRadius),
-          side: const BorderSide(color: borderColor),
+          side: BorderSide(color: borderColor),
         ),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
@@ -131,7 +131,7 @@ class AppTheme {
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
           foregroundColor: primaryColor,
-          side: const BorderSide(color: primaryColor),
+          side: BorderSide(color: primaryColor),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(borderRadius),
           ),
@@ -152,20 +152,20 @@ class AppTheme {
         fillColor: bgTertiary,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(borderRadius),
-          borderSide: const BorderSide(color: borderColor),
+          borderSide: BorderSide(color: borderColor),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(borderRadius),
-          borderSide: const BorderSide(color: borderColor),
+          borderSide: BorderSide(color: borderColor),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(borderRadius),
-          borderSide: const BorderSide(color: primaryColor, width: 2),
+          borderSide: BorderSide(color: primaryColor, width: 2),
         ),
-        labelStyle: const TextStyle(color: textSecondary),
-        hintStyle: const TextStyle(color: textLight),
+        labelStyle: TextStyle(color: textSecondary),
+        hintStyle: TextStyle(color: textLight),
       ),
-      textTheme: const TextTheme(
+      textTheme: TextTheme(
         displayLarge: TextStyle(color: textPrimary, fontSize: 32, fontWeight: FontWeight.bold),
         displayMedium: TextStyle(color: textPrimary, fontSize: 28, fontWeight: FontWeight.bold),
         displaySmall: TextStyle(color: textPrimary, fontSize: 24, fontWeight: FontWeight.bold),
@@ -179,15 +179,15 @@ class AppTheme {
         bodyMedium: TextStyle(color: textSecondary, fontSize: 14),
         bodySmall: TextStyle(color: textLight, fontSize: 12),
       ),
-      iconTheme: const IconThemeData(
+      iconTheme: IconThemeData(
         color: textSecondary,
         size: 20,
       ),
-      dividerTheme: const DividerThemeData(
+      dividerTheme: DividerThemeData(
         color: borderColor,
         thickness: 1,
       ),
-      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
         backgroundColor: bgPrimary,
         selectedItemColor: primaryColor,
         unselectedItemColor: textLight,
@@ -201,7 +201,7 @@ class AppTheme {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.light,
-      colorScheme: const ColorScheme.light(
+      colorScheme: ColorScheme.light(
         primary: lightPrimaryColor,
         secondary: lightSecondaryColor,
         surface: lightBgSecondary,
@@ -214,7 +214,7 @@ class AppTheme {
         onError: Colors.white,
       ),
       scaffoldBackgroundColor: lightBgSecondary,
-      appBarTheme: const AppBarTheme(
+      appBarTheme: AppBarTheme(
         backgroundColor: lightBgPrimary,
         foregroundColor: lightTextPrimary,
         elevation: 0,
@@ -242,7 +242,7 @@ class AppTheme {
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
           foregroundColor: lightPrimaryColor,
-          side: const BorderSide(color: lightPrimaryColor),
+          side: BorderSide(color: lightPrimaryColor),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(borderRadius),
           ),
@@ -263,20 +263,20 @@ class AppTheme {
         fillColor: lightBgPrimary,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(borderRadius),
-          borderSide: const BorderSide(color: lightBorderColor),
+          borderSide: BorderSide(color: lightBorderColor),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(borderRadius),
-          borderSide: const BorderSide(color: lightBorderColor),
+          borderSide: BorderSide(color: lightBorderColor),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(borderRadius),
-          borderSide: const BorderSide(color: lightPrimaryColor, width: 2),
+          borderSide: BorderSide(color: lightPrimaryColor, width: 2),
         ),
-        labelStyle: const TextStyle(color: lightTextSecondary),
-        hintStyle: const TextStyle(color: lightTextLight),
+        labelStyle: TextStyle(color: lightTextSecondary),
+        hintStyle: TextStyle(color: lightTextLight),
       ),
-      textTheme: const TextTheme(
+      textTheme: TextTheme(
         displayLarge: TextStyle(color: lightTextPrimary, fontSize: 32, fontWeight: FontWeight.bold),
         displayMedium: TextStyle(color: lightTextPrimary, fontSize: 28, fontWeight: FontWeight.bold),
         displaySmall: TextStyle(color: lightTextPrimary, fontSize: 24, fontWeight: FontWeight.bold),
@@ -290,15 +290,15 @@ class AppTheme {
         bodyMedium: TextStyle(color: lightTextSecondary, fontSize: 14),
         bodySmall: TextStyle(color: lightTextLight, fontSize: 12),
       ),
-      iconTheme: const IconThemeData(
+      iconTheme: IconThemeData(
         color: lightTextSecondary,
         size: 20,
       ),
-      dividerTheme: const DividerThemeData(
+      dividerTheme: DividerThemeData(
         color: lightBorderColor,
         thickness: 1,
       ),
-      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
         backgroundColor: lightBgPrimary,
         selectedItemColor: lightPrimaryColor,
         unselectedItemColor: lightTextLight,
