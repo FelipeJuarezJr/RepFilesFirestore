@@ -1,0 +1,1 @@
+ /home/john/Documenti/RepFiles/RepFilesFirestore/.dart_tool/flutter_build/c2052f3a516daf0a580de6e8cc954812/native_assets.yaml: 
