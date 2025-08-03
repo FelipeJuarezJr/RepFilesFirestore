@@ -12,3 +12,46 @@ Thumbs.db
 
 # Logs
 *.log 
+
+# Flutter/Dart specific
+*.apk
+*.aab
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Flutter/Dart specific
+**/doc/api/
+**/ios/Flutter/App.framework
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/Generated.xcconfig
+**/ios/Flutter/app.flx
+**/ios/Flutter/app.zip
+**/ios/Flutter/flutter_assets/
+**/ios/ServiceDefinitions.json
+**/ios/Runner/GeneratedPluginRegistrant.*
+
+# Symbolication related
+*.dSYM
+*.dSYM.zip
+
+# Obfuscation related
+*.map
+
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release
+
+# Build files
+build/
+*.lock
+*.iml
+*.class
+*.jar
+*.war
+*.ear
+
+# Generated files
+*.g.dart
+*.freezed.dart 
