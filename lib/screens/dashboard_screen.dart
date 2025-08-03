@@ -37,10 +37,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
             GridView.count(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              crossAxisCount: MediaQuery.of(context).size.width > 600 ? 4 : 2,
+              crossAxisCount: MediaQuery.of(context).size.width > 600 ? 4 : 1,
               crossAxisSpacing: 16,
               mainAxisSpacing: 16,
-              childAspectRatio: 1.2,
+              childAspectRatio: 3.04,
               children: const [
                 StatCard(
                   icon: Icons.drag_indicator,
@@ -75,38 +75,52 @@ class _DashboardScreenState extends State<DashboardScreen> {
             const SizedBox(height: 32),
 
             // Recent Activity
-            Text(
-              'Recent Activity',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-            const SizedBox(height: 16),
-            Card(
+            Container(
+              decoration: BoxDecoration(
+                color: AppTheme.bgPrimary,
+                borderRadius: BorderRadius.circular(12),
+                boxShadow: AppTheme.shadowSm,
+              ),
               child: Padding(
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.all(25),
                 child: Column(
-                  children: const [
-                    ActivityItem(
-                      icon: Icons.restaurant,
-                      iconColor: AppTheme.successColor,
-                      title: 'Feeding - Ball Python #BP001',
-                      description: 'Fed 1 medium rat (150g)',
-                      time: '2 hours ago',
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Recent Activity',
+                      style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                        color: AppTheme.textPrimary,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
-                    Divider(),
-                    ActivityItem(
-                      icon: Icons.science,
-                      iconColor: AppTheme.infoColor,
-                      title: 'Breeding - Corn Snake Pair',
-                      description: 'Eggs laid: 18 eggs',
-                      time: '1 day ago',
-                    ),
-                    Divider(),
-                    ActivityItem(
-                      icon: Icons.medical_services,
-                      iconColor: AppTheme.warningColor,
-                      title: 'Health Check - Bearded Dragon',
-                      description: 'Scheduled vet visit',
-                      time: '3 days ago',
+                    const SizedBox(height: 20),
+                    Column(
+                      children: const [
+                        ActivityItem(
+                          icon: Icons.restaurant,
+                          iconColor: AppTheme.successColor,
+                          title: 'Feeding - Ball Python #BP001',
+                          description: 'Fed 1 medium rat (150g)',
+                          time: '2 hours ago',
+                        ),
+                        SizedBox(height: 15),
+                        ActivityItem(
+                          icon: Icons.science,
+                          iconColor: AppTheme.infoColor,
+                          title: 'Breeding - Leopard Gecko Pair',
+                          description: 'Successful pairing recorded',
+                          time: '1 day ago',
+                        ),
+                        SizedBox(height: 15),
+                        ActivityItem(
+                          icon: Icons.favorite,
+                          iconColor: AppTheme.warningColor,
+                          title: 'Health Check - Bearded Dragon',
+                          description: 'Weight: 450g, Length: 18"',
+                          time: '3 days ago',
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -120,7 +134,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             const SizedBox(height: 16),
-            Card(
+            Container(
+              decoration: BoxDecoration(
+                color: AppTheme.bgPrimary,
+                borderRadius: BorderRadius.circular(12),
+                boxShadow: AppTheme.shadowSm,
+              ),
               child: Padding(
                 padding: const EdgeInsets.all(16),
                 child: Column(
@@ -210,7 +229,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
             const SizedBox(height: 32),
 
             // Quick Actions
-            Card(
+            Container(
+              decoration: BoxDecoration(
+                color: AppTheme.bgPrimary,
+                borderRadius: BorderRadius.circular(12),
+                boxShadow: AppTheme.shadowSm,
+              ),
               child: Padding(
                 padding: const EdgeInsets.all(16),
                 child: Column(
@@ -227,7 +251,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       crossAxisCount: MediaQuery.of(context).size.width > 600 ? 4 : 2,
                       crossAxisSpacing: 15,
                       mainAxisSpacing: 15,
-                      childAspectRatio: 1.3,
+                      childAspectRatio: 2.33,
                       children: [
                         _buildActionButton(
                           icon: Icons.add,

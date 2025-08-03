@@ -28,40 +28,40 @@ class _QuickActionButtonState extends State<QuickActionButton> {
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
         onTap: widget.onTap,
-        child: CustomPaint(
-          painter: DashedBorderPainter(
-            color: _isHovered ? AppTheme.primaryColor : AppTheme.borderColor,
-            strokeWidth: 2,
-            dashPattern: const [4, 1],
-          ),
-          child: AnimatedContainer(
-            duration: AppTheme.transition,
-            padding: const EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              color: _isHovered ? AppTheme.bgPrimary : AppTheme.bgSecondary,
-              borderRadius: BorderRadius.circular(AppTheme.borderRadius),
+                  child: CustomPaint(
+            painter: DashedBorderPainter(
+              color: _isHovered ? AppTheme.primaryColor : AppTheme.borderColor,
+              strokeWidth: 4,
+              dashPattern: const [6, 0.0625],
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  widget.icon,
-                  size: 24, // 1.5rem equivalent
-                  color: _isHovered ? AppTheme.primaryColor : AppTheme.textSecondary,
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  widget.label,
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
+                      child: AnimatedContainer(
+              duration: AppTheme.transition,
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+              decoration: BoxDecoration(
+                color: _isHovered ? AppTheme.bgPrimary : AppTheme.bgSecondary,
+                borderRadius: BorderRadius.circular(AppTheme.borderRadius),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    widget.icon,
+                    size: 24, // 1.5rem equivalent
                     color: _isHovered ? AppTheme.primaryColor : AppTheme.textSecondary,
                   ),
-                  textAlign: TextAlign.center,
-                ),
-              ],
+                  const SizedBox(height: 8),
+                  Text(
+                    widget.label,
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      color: _isHovered ? AppTheme.primaryColor : AppTheme.textSecondary,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
             ),
-          ),
         ),
       ),
     );
