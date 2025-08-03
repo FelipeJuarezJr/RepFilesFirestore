@@ -844,7 +844,7 @@ class _RegisterScreenState extends State<RegisterScreen> with TickerProviderStat
                               builder: (context, child) {
                                 return SizedBox(
                                   width: double.infinity,
-                                  height: 56,
+                                  height: 36,
                                   child: ElevatedButton(
                                     onPressed: _isLoading ? null : _signUp,
                                     style: ElevatedButton.styleFrom(
@@ -867,7 +867,7 @@ class _RegisterScreenState extends State<RegisterScreen> with TickerProviderStat
                                         : Row(
                                             mainAxisAlignment: MainAxisAlignment.center,
                                             children: [
-                                              const Icon(Icons.person_add, size: 18),
+                                              const Icon(Icons.person_add, size: 18, color: Colors.white),
                                               const SizedBox(width: 8),
                                               Text(
                                                 'Create Account',

@@ -26,11 +26,13 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
   bool _isEmailHovered = false;
   bool _isPasswordHovered = false;
   bool _isSignInHovered = false;
+  bool _isGoogleButtonAnimating = false;
 
   // Animation controllers
   late AnimationController _emailAnimationController;
   late AnimationController _passwordAnimationController;
   late AnimationController _signInAnimationController;
+  late AnimationController _googleButtonAnimationController;
   late Animation<double> _emailBorderAnimation;
   late Animation<double> _passwordBorderAnimation;
   late Animation<double> _emailShadowAnimation;
@@ -93,6 +95,12 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
       parent: _signInAnimationController,
       curve: Curves.easeInOut,
     ));
+
+    // Google button animation
+    _googleButtonAnimationController = AnimationController(
+      duration: const Duration(milliseconds: 1200),
+      vsync: this,
+    );
   }
 
   @override
@@ -102,6 +110,7 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
     _emailAnimationController.dispose();
     _passwordAnimationController.dispose();
     _signInAnimationController.dispose();
+    _googleButtonAnimationController.dispose();
     super.dispose();
   }
 
@@ -203,6 +212,47 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
     } else {
       _signInAnimationController.reverse();
     }
+  }
+
+  void _startGoogleButtonAnimation() {
+    if (!_isGoogleButtonAnimating) {
+      setState(() => _isGoogleButtonAnimating = true);
+      _googleButtonAnimationController.forward().then((_) {
+        setState(() => _isGoogleButtonAnimating = false);
+        _googleButtonAnimationController.reset();
+      });
+    }
+  }
+
+  Color _getGoogleButtonColor() {
+    if (!_isGoogleButtonAnimating) {
+      return AppTheme.bgPrimary;
+    }
+    
+    final progress = _googleButtonAnimationController.value;
+    
+    // Define the color sequence
+    final colors = [
+      Colors.blue,
+      Colors.red,
+      Colors.yellow,
+      Colors.green,
+      AppTheme.bgPrimary, // Return to original color
+    ];
+    
+    // Calculate which color pair we're between
+    final colorIndex = (progress * (colors.length - 1)).floor();
+    final nextColorIndex = (colorIndex + 1).clamp(0, colors.length - 1);
+    
+    // Calculate the interpolation factor within the current color pair
+    final localProgress = (progress * (colors.length - 1)) - colorIndex;
+    
+    // Smoothly interpolate between the two colors
+    return Color.lerp(
+      colors[colorIndex],
+      colors[nextColorIndex],
+      localProgress,
+    )!;
   }
 
   @override
@@ -536,7 +586,7 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
                               builder: (context, child) {
                                 return SizedBox(
                                   width: double.infinity,
-                                  height: 56,
+                                  height: 36,
                                   child: ElevatedButton(
                                     onPressed: _isLoading ? null : _signIn,
                                     style: ElevatedButton.styleFrom(
@@ -559,7 +609,7 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
                                         : Row(
                                             mainAxisAlignment: MainAxisAlignment.center,
                                             children: [
-                                              const Icon(Icons.login, size: 18),
+                                              const Icon(Icons.login, size: 18, color: Colors.white),
                                               const SizedBox(width: 8),
                                               Text(
                                                 'Sign In',
@@ -610,28 +660,39 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
                           const SizedBox(height: 30),
 
                           // Social Sign In Buttons
-                          SizedBox(
-                            width: double.infinity,
-                            height: 48,
-                            child: OutlinedButton.icon(
-                              onPressed: () {
-                                // TODO: Implement Google sign in
-                              },
-                              style: OutlinedButton.styleFrom(
-                                side: BorderSide(color: AppTheme.borderColor),
-                                backgroundColor: AppTheme.bgPrimary,
-                                foregroundColor: AppTheme.textPrimary,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(AppTheme.borderRadius),
-                                ),
-                              ),
-                              icon: const Icon(Icons.g_mobiledata, size: 18),
-                              label: Text(
-                                'Continue with Google',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w500,
-                                ),
+                          MouseRegion(
+                            onEnter: (_) => _startGoogleButtonAnimation(),
+                            child: GestureDetector(
+                              onTap: () => _startGoogleButtonAnimation(),
+                              child: AnimatedBuilder(
+                                animation: _googleButtonAnimationController,
+                                builder: (context, child) {
+                                  return SizedBox(
+                                    width: double.infinity,
+                                    height: 36,
+                                    child: OutlinedButton.icon(
+                                      onPressed: () {
+                                        // TODO: Implement Google sign in
+                                      },
+                                      style: OutlinedButton.styleFrom(
+                                        side: BorderSide(color: AppTheme.borderColor),
+                                        backgroundColor: _getGoogleButtonColor(),
+                                        foregroundColor: AppTheme.textPrimary,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(AppTheme.borderRadius),
+                                        ),
+                                      ),
+                                      icon: const Icon(Icons.g_mobiledata, size: 18),
+                                      label: Text(
+                                        'Continue with Google',
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
                               ),
                             ),
                           ),
