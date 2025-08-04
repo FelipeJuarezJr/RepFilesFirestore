@@ -382,6 +382,12 @@ class _RegisterScreenState extends State<RegisterScreen> with TickerProviderStat
   Widget build(BuildContext context) {
     final themeService = context.watch<ThemeService>();
     final isDarkMode = themeService.isDarkMode;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isMobile = screenWidth <= 768;
+    
+    // Responsive button height
+    final buttonHeight = isMobile ? 48.0 : 36.0;
+    final buttonFontSize = isMobile ? 14.0 : 16.0;
     
     return Scaffold(
       body: Container(
@@ -844,7 +850,7 @@ class _RegisterScreenState extends State<RegisterScreen> with TickerProviderStat
                               builder: (context, child) {
                                 return SizedBox(
                                   width: double.infinity,
-                                  height: 36,
+                                  height: buttonHeight,
                                   child: ElevatedButton(
                                     onPressed: _isLoading ? null : _signUp,
                                     style: ElevatedButton.styleFrom(
@@ -872,7 +878,7 @@ class _RegisterScreenState extends State<RegisterScreen> with TickerProviderStat
                                               Text(
                                                 'Create Account',
                                                 style: TextStyle(
-                                                  fontSize: 16,
+                                                  fontSize: buttonFontSize,
                                                   fontWeight: FontWeight.w600,
                                                 ),
                                               ),

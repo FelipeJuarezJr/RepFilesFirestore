@@ -259,6 +259,12 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
   Widget build(BuildContext context) {
     final themeService = context.watch<ThemeService>();
     final isDarkMode = themeService.isDarkMode;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isMobile = screenWidth <= 768;
+    
+    // Responsive button height
+    final buttonHeight = isMobile ? 48.0 : 36.0;
+    final buttonFontSize = isMobile ? 14.0 : 16.0;
     
     return Scaffold(
       body: Container(
@@ -586,7 +592,7 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
                               builder: (context, child) {
                                 return SizedBox(
                                   width: double.infinity,
-                                  height: 36,
+                                  height: buttonHeight,
                                   child: ElevatedButton(
                                     onPressed: _isLoading ? null : _signIn,
                                     style: ElevatedButton.styleFrom(
@@ -614,7 +620,7 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
                                               Text(
                                                 'Sign In',
                                                 style: TextStyle(
-                                                  fontSize: 16,
+                                                  fontSize: buttonFontSize,
                                                   fontWeight: FontWeight.w600,
                                                 ),
                                               ),
@@ -669,7 +675,7 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
                                 builder: (context, child) {
                                   return SizedBox(
                                     width: double.infinity,
-                                    height: 36,
+                                    height: buttonHeight,
                                     child: OutlinedButton.icon(
                                       onPressed: () {
                                         // TODO: Implement Google sign in
@@ -686,7 +692,7 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
                                       label: Text(
                                         'Continue with Google',
                                         style: TextStyle(
-                                          fontSize: 14,
+                                          fontSize: buttonFontSize,
                                           fontWeight: FontWeight.w500,
                                         ),
                                       ),

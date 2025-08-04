@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:provider/provider.dart';
 import '../services/auth_service.dart';
 import '../services/theme_service.dart';
@@ -9,7 +10,6 @@ import 'breeding_screen.dart';
 import 'schedule_screen.dart';
 import 'inventory_screen.dart';
 import 'reports_screen.dart';
-import 'package:flutter/foundation.dart';
 
 class MainAppScreen extends StatefulWidget {
   const MainAppScreen({super.key});
@@ -67,7 +67,31 @@ class _MainAppScreenState extends State<MainAppScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+      body: kIsWeb 
+        ? _buildWebLayout()
+        : _buildMobileLayout(),
+    );
+  }
+
+  Widget _buildWebLayout() {
+    return Column(
+      children: [
+        // Top Navigation Bar (matching HTML exactly)
+        _buildTopNavigationBar(),
+        // Mobile Navigation Menu (overlay)
+        if (_isMobileMenuOpen) _buildMobileNavigationMenu(),
+        // Main Content Area
+        Expanded(
+          child: _screens[_currentIndex],
+        ),
+      ],
+    );
+  }
+
+  Widget _buildMobileLayout() {
+    return SafeArea(
+      bottom: false, // Let individual screens handle bottom safe area
+      child: Column(
         children: [
           // Top Navigation Bar (matching HTML exactly)
           _buildTopNavigationBar(),
